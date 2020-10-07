@@ -6,7 +6,7 @@ import board
 import adafruit_dht
 
 # Initial the dht device, with data pin connected to:
-dhtDevice = adafruit_dht.DHT11(board.D17)
+dhtDevice = adafruit_dht.DHT11(board.D27)
 
 
 app = Flask(__name__)
@@ -31,4 +31,4 @@ def metrics():
         raise error
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 5000, threaded=True, debug=True)
+    app.run('0.0.0.0', 5000, threaded=True)
