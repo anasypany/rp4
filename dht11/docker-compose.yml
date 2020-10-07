@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  dht11-server:
+    environment:
+      - FLASK_ENV=development
+    ports:
+      - "5000:5000"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+    privileged: true
+    image: anasypany/dht11-server:0.1
+    container_name: dkt11-server
+    devices:
+      - /dev/gpiomem
+      - /dev/i2c-1
+      - /dev/mem
+    restart: "always"
