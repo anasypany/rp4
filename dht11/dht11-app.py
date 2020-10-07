@@ -21,10 +21,10 @@ def metrics():
         humidity = dhtDevice.humidity
         return '# HELP temp_celcius local temperature in Celcius\n# TYPE temp_celcius gauge\ntemp_celcius {}\n# HELP temp_fahrenheit local temperature in Fahrenheit\n# TYPE temp_fahrenheit gauge\ntemp_fahrenheit {}\n# HELP humidity_percentage local humidity as a percentage\n# TYPE humidity_percentage gauge\nhumidity_percentage {}\n'.format(int(temperature_c), int(temperature_f), int(humidity)), 200, {'Content-Type': 'text/plain; charset=utf-8'}
 
-
     except RuntimeError as error:
         # Errors happen fairly often, DHT's are hard to read, just keep going
         return 'Could not read from DHT11.', 200, {'Content-Type': 'text/plain; charset=utf-8'}
+
     except Exception as error:
         dhtDevice.exit()
         return 'oof.', 404, {'Content-Type': 'text/plain; charset=utf-8'}

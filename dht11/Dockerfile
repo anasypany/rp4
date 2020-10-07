@@ -3,6 +3,7 @@ FROM python:buster
 COPY . /dht11
 
 RUN apt-get update && \
+    apt-get install -y apt-utils && \
     apt-get upgrade -y && \
     pip3 install -r /dht11/requirements.txt && \
     apt-get install libgpiod2 && \
